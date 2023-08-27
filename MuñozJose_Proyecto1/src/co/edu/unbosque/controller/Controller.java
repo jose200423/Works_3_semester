@@ -2,6 +2,7 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 import co.edu.unbosque.model.VehicleDAO;
@@ -59,6 +60,7 @@ public class Controller implements ActionListener {
 	public void Agregar() {
 
 		boolean type = false;
+		LocalTime timeCurrent = LocalTime.now();
 		String carro = (String) window.getRecord().getCategory().getSelectedItem();
 		String placa = window.getRecord().getPlate().getText();
 		placa = placa.toUpperCase();
@@ -72,7 +74,7 @@ public class Controller implements ActionListener {
 
 		try {
 			PlateException.validarPlaca(placa, type);
-			boolean esta = ve.crear(new VehicleDTO(carro, placa));
+			boolean esta = ve.crear(new VehicleDTO(carro, placa,timeCurrent));
 			if (esta) {
 				w.informacion("Vehículo agregado exitosamente.");
 			} else {

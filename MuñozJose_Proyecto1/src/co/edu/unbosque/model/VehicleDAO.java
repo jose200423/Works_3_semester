@@ -8,7 +8,7 @@ import co.edu.unbosque.model.persistence.FileHandler;
 public class VehicleDAO {
 
 	private MyLInkedList<VehicleDTO> listv;
-
+	
 	public VehicleDAO() {
 		try {
 			if (!Objects.isNull(FileHandler.leerSerializado("serializado.mjpu"))) {
@@ -80,7 +80,7 @@ public class VehicleDAO {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < listv.size(); i++) {
 			sb.append(listv.get(i).getInfo().getType()).append(" --> ");
-			sb.append(listv.get(i).getInfo().getPlate().toString());
+			sb.append(listv.get(i).getInfo().getPlate()).toString();
 			sb.append("\n");
 		}
 
