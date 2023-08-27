@@ -2,6 +2,8 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class VehicleDTO implements Serializable {
 
@@ -20,6 +22,7 @@ public class VehicleDTO implements Serializable {
 		this.type = type;
 		this.plate = plate;
 		this.timeCurrent = LocalTime.now();
+		this.amPm = this.timeCurrent.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT));
 		
 
 	}
@@ -62,11 +65,10 @@ public class VehicleDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		
 		StringBuilder sb = new StringBuilder();
 		sb.append("Tipo: ").append(type).append(" --> ");
 		sb.append("Placa: ").append(plate).append(" --> ");
-		sb.append("Time: ").append(timeCurrent).append("\n");
+		sb.append("Time: ").append(timeCurrent).append(amPm).append("\n");
 		return sb.toString();
 	}
 
