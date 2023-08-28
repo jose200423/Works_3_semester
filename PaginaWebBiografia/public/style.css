@@ -29,3 +29,12 @@ h1{
 	color: white;
 	font-size: 25px;
 }
+
+.img-1{
+	margin: -100px 0px 0px 600px;
+	width: 350px;
+}
+.img-2{
+	margin: -1900px 0px 0px 1000px;
+	width: 250px;
+}
