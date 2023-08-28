@@ -1,0 +1,31 @@
+*{
+	font-family: 'ADLaM Display', cursive;
+}
+
+body{
+    background: url("https://cdn.pixabay.com/photo/2016/10/22/01/54/wood-1759566_1280.jpg");   
+}
+
+h1{
+	font-size: 80px;
+	background:linear-gradient(white, red);
+	color: transparent ;
+	background-clip: text;
+	-webkit-background-clip: text;
+	animation: text 5s linear infinite;
+ }
+ 
+ 
+@keyframes text{
+	 0%{
+		 filter: hue-rotate(0deg);
+	 }
+	 100%{
+		 filter: hue-rotate(360deg);
+	 }
+ }
+ 
+.titulosecundario{
+	color: white;
+	font-size: 25px;
+}
