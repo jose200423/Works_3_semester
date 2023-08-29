@@ -25,6 +25,9 @@ public class VehicleDAO {
 
 	public boolean crear(VehicleDTO ve) {
 		String nuevaPlaca = ve.getPlate();
+		if(listv.size() >= 100) {
+			return false;
+		}
 
 		for (int i = 0; i < listv.size(); i++) {
 			String placaExistente = listv.get(i).getInfo().getPlate();

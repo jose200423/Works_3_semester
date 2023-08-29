@@ -79,7 +79,7 @@ public class Controller implements ActionListener {
 				w.informacion("Vehículo agregado exitosamente.");
 			} else {
 
-				w.informacion("Error al agregar vehículo: ya existe");
+				w.informacion("Error al agregar vehículo: ya existe o la lista ya tiene 100 vehiculos");
 			}
 		} catch (PlateException e) {
 			w.informacion("Error al agregar vehículo: " + e.getMessage());
