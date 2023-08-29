@@ -25,9 +25,9 @@ public class VehicleDTO implements Serializable {
 		this.type = type;
 		this.plate = plate;
 		this.timeCurrent = LocalTime.now();
-		hours = timeCurrent.getHour();
-		mins = timeCurrent.getMinute();
-		segs = timeCurrent.getSecond();
+		this.hours = timeCurrent.getHour();
+		this.mins = timeCurrent.getMinute();
+		this.segs = timeCurrent.getSecond();
 
 	}
 

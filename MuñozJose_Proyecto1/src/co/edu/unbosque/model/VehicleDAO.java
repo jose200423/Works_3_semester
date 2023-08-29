@@ -1,5 +1,6 @@
 package co.edu.unbosque.model;
 
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.Objects;
 
@@ -8,8 +9,17 @@ import co.edu.unbosque.model.persistence.FileHandler;
 public class VehicleDAO {
 
 	private MyLInkedList<VehicleDTO> listv;
+	private int hours;
+	private int mins;
+	private int segs;
+	private LocalTime timeCurrent;
+	
 	
 	public VehicleDAO() {
+		this.timeCurrent = LocalTime.now();
+		this.hours = timeCurrent.getHour();
+		this.mins = timeCurrent.getMinute();
+		this.segs = timeCurrent.getSecond();
 		try {
 			if (!Objects.isNull(FileHandler.leerSerializado("serializado.mjpu"))) {
 				listv = cargarDesdeArchivo();
@@ -80,7 +90,8 @@ public class VehicleDAO {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < listv.size(); i++) {
 			sb.append(listv.get(i).getInfo().getType()).append(" --> ");
-			sb.append(listv.get(i).getInfo().getPlate()).toString();
+			sb.append(listv.get(i).getInfo().getPlate()).append(" --> ");
+			sb.append(hours).append(":").append(mins).append(":").append(segs).toString();
 			sb.append("\n");
 		}
 
@@ -91,7 +102,8 @@ public class VehicleDAO {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < listv.size(); i++) {
 			sb.append(listv.get(i).getInfo().getType()).append(" --> ");
-			sb.append(listv.get(i).getInfo().getPlate()).toString();
+			sb.append(listv.get(i).getInfo().getPlate()).append(" --> ");
+			sb.append(hours).append(":").append(mins).append(":").append(segs).toString();
 			sb.append("\n");
 		}
 
