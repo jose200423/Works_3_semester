@@ -1,5 +1,6 @@
 package co.edu.unbosque.model;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -10,8 +11,6 @@ public class VehicleDAO {
 
 	private MyLInkedList<VehicleDTO> listv;
 
-	
-	
 	public VehicleDAO() {
 		try {
 			if (!Objects.isNull(FileHandler.leerSerializado("serializado.mjpu"))) {
@@ -26,9 +25,9 @@ public class VehicleDAO {
 
 	public boolean crear(VehicleDTO ve) {
 		String nuevaPlaca = ve.getPlate();
-		
+
 		for (int i = 0; i < listv.size(); i++) {
-			   String placaExistente = listv.get(i).getInfo().getPlate();
+			String placaExistente = listv.get(i).getInfo().getPlate();
 			if (placaExistente.equals(nuevaPlaca)) {
 				return false;
 			}
@@ -37,14 +36,14 @@ public class VehicleDAO {
 		escribirPlacas();
 		guardarEnArchivo();
 		return true;
-		
+
 	}
 
 	public boolean eliminar(String p) {
 
 		for (int i = 0; i < listv.size(); i++) {
 			if (listv.get(i).getInfo().getPlate().equals(p)) {
-				escribirEliminados();
+				escribirEliminados(i);
 				listv.remove(i);
 				escribirPlacas();
 				guardarEnArchivo();
@@ -80,35 +79,41 @@ public class VehicleDAO {
 	}
 
 	public void escribirPlacas() {
-		LocalTime timeCurrent = LocalTime.now();;
+		LocalTime timeCurrent = LocalTime.now();
+		LocalDate dateCurrent = LocalDate.now();
 		int hours = timeCurrent.getHour();
 		int mins = timeCurrent.getMinute();
-		int segs  = timeCurrent.getSecond();
+		int segs = timeCurrent.getSecond();
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < listv.size(); i++) {
 			sb.append(listv.get(i).getInfo().getType()).append(" --> ");
 			sb.append(listv.get(i).getInfo().getPlate()).append(" --> ");
-			sb.append(hours).append(":").append(mins).append(":").append(segs).toString();
+			sb.append(hours).append(":").append(mins).append(":").append(segs).append(" --> ");
+			sb.append(dateCurrent).toString();
 			sb.append("\n");
 		}
 
 		FileHandler.escribirArchivo("Cars.txt", sb.toString());
 	}
 
-	public void escribirEliminados() {
-		LocalTime timeCurrent = LocalTime.now();;
+	public void escribirEliminados(int remove) {
+		LocalTime timeCurrent = LocalTime.now();
+		LocalDate dateCurrent = LocalDate.now();
 		int hours = timeCurrent.getHour();
 		int mins = timeCurrent.getMinute();
-		int segs  = timeCurrent.getSecond();
+		int segs = timeCurrent.getSecond();
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < listv.size(); i++) {
 			sb.append(listv.get(i).getInfo().getType()).append(" --> ");
 			sb.append(listv.get(i).getInfo().getPlate()).append(" --> ");
-			sb.append(hours).append(":").append(mins).append(":").append(segs).toString();
+			sb.append(hours).append(":").append(mins).append(":").append(segs).append(" --> ");
+			sb.append(dateCurrent).toString();
 			sb.append("\n");
 		}
 
 		FileHandler.escribirArchivo("salida.txt", sb.toString());
 	}
+	
+	
 
 }

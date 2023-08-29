@@ -1,6 +1,7 @@
 package co.edu.unbosque.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -11,6 +12,7 @@ public class VehicleDTO implements Serializable {
 	private String plate;
 	private String type;
 	private LocalTime timeCurrent;
+	private LocalDate dateCurrent;
 	private String amPm;
 	private int hours;
 	private int mins;
@@ -25,10 +27,21 @@ public class VehicleDTO implements Serializable {
 		this.type = type;
 		this.plate = plate;
 		this.timeCurrent = LocalTime.now();
+		this.dateCurrent = LocalDate.now();
 		this.hours = timeCurrent.getHour();
 		this.mins = timeCurrent.getMinute();
 		this.segs = timeCurrent.getSecond();
 
+	}
+	
+	
+
+	public LocalDate getDateCurrent() {
+		return dateCurrent;
+	}
+
+	public void setDateCurrent(LocalDate dateCurrent) {
+		this.dateCurrent = dateCurrent;
 	}
 
 	public int getHours() {
@@ -96,7 +109,8 @@ public class VehicleDTO implements Serializable {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Tipo: ").append(type).append(" --> ");
 		sb.append("Placa: ").append(plate).append(" --> ");
-		sb.append("Time: ").append(hours).append(":").append(mins).append(":").append(segs).append("\n");
+		sb.append("Hora: ").append(hours).append(":").append(mins).append(":").append(segs).append(" --> ");
+		sb.append("Dia: ").append(dateCurrent).append("\n");
 		return sb.toString();
 	}
 
