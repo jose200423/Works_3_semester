@@ -14,3 +14,9 @@ Carro --> AAA777
 Carro --> AAA555
 Carro --> AAA454
 Carro --> JOS456
+Carro --> ABC234
+Moto --> ADV34D
+Carro --> SDF450
+Carro --> SDE543
+Carro --> FDS234
+Carro --> HDG432

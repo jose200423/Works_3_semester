@@ -10,8 +10,11 @@ public class VehicleDTO implements Serializable {
 	private static final long serialVersionUID = 3498085372505045103L;
 	private String plate;
 	private String type;
-	private LocalTime timeCurrent; 
+	private LocalTime timeCurrent;
 	private String amPm;
+	private int hours;
+	private int mins;
+	private int segs;
 
 	public VehicleDTO() {
 
@@ -22,11 +25,36 @@ public class VehicleDTO implements Serializable {
 		this.type = type;
 		this.plate = plate;
 		this.timeCurrent = LocalTime.now();
-		this.amPm = this.timeCurrent.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT));
-		
+		hours = timeCurrent.getHour();
+		mins = timeCurrent.getMinute();
+		segs = timeCurrent.getSecond();
 
 	}
-	
+
+	public int getHours() {
+		return hours;
+	}
+
+	public void setHours(int hours) {
+		this.hours = hours;
+	}
+
+	public int getMins() {
+		return mins;
+	}
+
+	public void setMins(int mins) {
+		this.mins = mins;
+	}
+
+	public int getSegs() {
+		return segs;
+	}
+
+	public void setSegs(int segs) {
+		this.segs = segs;
+	}
+
 	public String getAmPm() {
 		return amPm;
 	}
@@ -68,7 +96,7 @@ public class VehicleDTO implements Serializable {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Tipo: ").append(type).append(" --> ");
 		sb.append("Placa: ").append(plate).append(" --> ");
-		sb.append("Time: ").append(timeCurrent).append(amPm).append("\n");
+		sb.append("Time: ").append(hours).append(":").append(mins).append(":").append(segs).append("\n");
 		return sb.toString();
 	}
 
