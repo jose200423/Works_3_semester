@@ -9,17 +9,10 @@ import co.edu.unbosque.model.persistence.FileHandler;
 public class VehicleDAO {
 
 	private MyLInkedList<VehicleDTO> listv;
-	private int hours;
-	private int mins;
-	private int segs;
-	private LocalTime timeCurrent;
+
 	
 	
 	public VehicleDAO() {
-		this.timeCurrent = LocalTime.now();
-		this.hours = timeCurrent.getHour();
-		this.mins = timeCurrent.getMinute();
-		this.segs = timeCurrent.getSecond();
 		try {
 			if (!Objects.isNull(FileHandler.leerSerializado("serializado.mjpu"))) {
 				listv = cargarDesdeArchivo();
@@ -87,6 +80,10 @@ public class VehicleDAO {
 	}
 
 	public void escribirPlacas() {
+		LocalTime timeCurrent = LocalTime.now();;
+		int hours = timeCurrent.getHour();
+		int mins = timeCurrent.getMinute();
+		int segs  = timeCurrent.getSecond();
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < listv.size(); i++) {
 			sb.append(listv.get(i).getInfo().getType()).append(" --> ");
@@ -99,6 +96,10 @@ public class VehicleDAO {
 	}
 
 	public void escribirEliminados() {
+		LocalTime timeCurrent = LocalTime.now();;
+		int hours = timeCurrent.getHour();
+		int mins = timeCurrent.getMinute();
+		int segs  = timeCurrent.getSecond();
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < listv.size(); i++) {
 			sb.append(listv.get(i).getInfo().getType()).append(" --> ");
