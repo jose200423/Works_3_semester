@@ -25,7 +25,7 @@ public class VehicleDAO {
 
 	public boolean crear(VehicleDTO ve) {
 		String nuevaPlaca = ve.getPlate();
-		if(listv.size() >= 100) {
+		if (listv.size() >= 100) {
 			return false;
 		}
 
@@ -46,7 +46,7 @@ public class VehicleDAO {
 
 		for (int i = 0; i < listv.size(); i++) {
 			if (listv.get(i).getInfo().getPlate().equals(p)) {
-				escribirEliminados(i);
+				escribirEliminados(listv.get(i).getInfo());
 				listv.remove(i);
 				escribirPlacas();
 				guardarEnArchivo();
@@ -99,24 +99,19 @@ public class VehicleDAO {
 		FileHandler.escribirArchivo("Cars.txt", sb.toString());
 	}
 
-	public void escribirEliminados(int remove) {
+	public void escribirEliminados(VehicleDTO v) {
+		StringBuilder sb = new StringBuilder(FileHandler.leerArchivo("salida.txt"));
 		LocalTime timeCurrent = LocalTime.now();
 		LocalDate dateCurrent = LocalDate.now();
 		int hours = timeCurrent.getHour();
 		int mins = timeCurrent.getMinute();
 		int segs = timeCurrent.getSecond();
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < listv.size(); i++) {
-			sb.append(listv.get(i).getInfo().getType()).append(" --> ");
-			sb.append(listv.get(i).getInfo().getPlate()).append(" --> ");
-			sb.append(hours).append(":").append(mins).append(":").append(segs).append(" --> ");
-			sb.append(dateCurrent).toString();
-			sb.append("\n");
-		}
-
+		sb.append(v.getType()).append(" --> ");
+		sb.append(v.getPlate()).append(" --> ");
+		sb.append(hours).append(":").append(mins).append(":").append(segs).append(" --> ");
+		sb.append(dateCurrent).toString();
+		sb.append("\n");
 		FileHandler.escribirArchivo("salida.txt", sb.toString());
 	}
-	
-	
 
 }

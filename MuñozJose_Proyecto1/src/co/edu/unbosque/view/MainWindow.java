@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -18,6 +19,8 @@ public class MainWindow extends JFrame {
 		setTitle("Titan Plaza Parking");
 		setSize(800, 800);// x, y
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Color miColor = new Color(121, 7, 170);
+		getRootPane().setBorder(BorderFactory.createLineBorder(miColor, 15));
 		getContentPane().setBackground(Color.BLACK);
 		getContentPane().setLayout(null);
 		//

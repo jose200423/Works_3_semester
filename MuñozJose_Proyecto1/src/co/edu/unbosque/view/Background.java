@@ -29,10 +29,10 @@ public class Background extends JPanel{
 
 	private void inicializarComponentes() {
 
-		ImageIcon im = new ImageIcon(getClass().getResource("/Imagenes/Titan.png"));
+		ImageIcon im = new ImageIcon(getClass().getResource("/Imagenes/fondo.jpg"));
 		Image imagenOriginal = im.getImage();
 
-		int nuevoAncho = 785;
+		int nuevoAncho = 900;
 		int nuevoAlto = (nuevoAncho * imagenOriginal.getHeight(null)) / imagenOriginal.getWidth(null);
 		Image imagenEscalada = imagenOriginal.getScaledInstance(nuevoAncho, nuevoAlto, Image.SCALE_SMOOTH);
 
