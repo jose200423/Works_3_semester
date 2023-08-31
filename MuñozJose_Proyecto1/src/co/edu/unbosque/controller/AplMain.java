@@ -6,5 +6,4 @@ public class AplMain {
 		
 		Controller co = new Controller();
 	}
-
 }

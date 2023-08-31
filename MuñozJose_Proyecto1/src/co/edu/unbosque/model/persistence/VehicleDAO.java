@@ -101,7 +101,7 @@ public class VehicleDAO {
 	}
 
 	public void writeDeleted(VehicleDTO v) {
-		StringBuilder sb = new StringBuilder(FileHandler.readFile("salida.txt"));
+		StringBuilder sb = new StringBuilder(FileHandler.readFile("exit.txt"));
 		LocalTime timeCurrent = LocalTime.now();
 		LocalDate dateCurrent = LocalDate.now();
 		int hours = timeCurrent.getHour();
