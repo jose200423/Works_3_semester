@@ -97,7 +97,7 @@ public class Record extends JPanel{
 		category.setBackground(Color.white);
 		category.setForeground(Color.BLACK);
 		category.addItem("");
-		String opciones =  FileHandler.leerArchivo("vehiculo.txt");
+		String opciones =  FileHandler.readFile("type.txt");
 		String[] lineas = opciones.split("\n");
 		for (String linea : lineas) { 
 			category.addItem(linea);

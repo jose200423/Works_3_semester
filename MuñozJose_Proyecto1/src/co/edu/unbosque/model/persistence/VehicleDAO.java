@@ -1,11 +1,12 @@
-package co.edu.unbosque.model;
+package co.edu.unbosque.model.persistence;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.Objects;
 
-import co.edu.unbosque.model.persistence.FileHandler;
+import co.edu.unbosque.model.VehicleDTO;
+import co.edu.unbosque.utiles.MyLInkedList;
 
 public class VehicleDAO {
 
@@ -13,7 +14,7 @@ public class VehicleDAO {
 
 	public VehicleDAO() {
 		try {
-			if (!Objects.isNull(FileHandler.leerSerializado("serializado.mjpu"))) {
+			if (!Objects.isNull(FileHandler.readSerialized("serializado.mjpu"))) {
 				listv = cargarDesdeArchivo();
 			} else {
 				listv = new MyLInkedList<>();
@@ -23,32 +24,32 @@ public class VehicleDAO {
 		}
 	}
 
-	public boolean crear(VehicleDTO ve) {
-		String nuevaPlaca = ve.getPlate();
+	public boolean create(VehicleDTO ve) {
+		String newPlate = ve.getPlate();
 		if (listv.size() >= 100) {
 			return false;
 		}
 
 		for (int i = 0; i < listv.size(); i++) {
-			String placaExistente = listv.get(i).getInfo().getPlate();
-			if (placaExistente.equals(nuevaPlaca)) {
+			String existingPlate = listv.get(i).getInfo().getPlate();
+			if (existingPlate.equals(newPlate)) {
 				return false;
 			}
 		}
 		listv.addLast(ve);
-		escribirPlacas();
+		writePlates();
 		guardarEnArchivo();
 		return true;
 
 	}
 
-	public boolean eliminar(String p) {
+	public boolean eliminate(String p) {
 
 		for (int i = 0; i < listv.size(); i++) {
 			if (listv.get(i).getInfo().getPlate().equals(p)) {
-				escribirEliminados(listv.get(i).getInfo());
+				writeDeleted(listv.get(i).getInfo());
 				listv.remove(i);
-				escribirPlacas();
+				writePlates();
 				guardarEnArchivo();
 				return true;
 			}
@@ -57,7 +58,7 @@ public class VehicleDAO {
 
 	}
 
-	public String mostrar() {
+	public String show() {
 		StringBuffer buf = new StringBuffer();
 		for (int i = 0; i < listv.size(); i++) {
 			buf.append(listv.get(i).getInfo().toString());
@@ -66,11 +67,11 @@ public class VehicleDAO {
 	}
 
 	public void guardarEnArchivo() {
-		FileHandler.escribirSerializado("serializado.mjpu", listv);
+		FileHandler.writeSerialized("serializado.mjpu", listv);
 	}
 
 	public MyLInkedList<VehicleDTO> cargarDesdeArchivo() {
-		return (MyLInkedList<VehicleDTO>) FileHandler.leerSerializado("serializado.mjpu");
+		return (MyLInkedList<VehicleDTO>) FileHandler.readSerialized("serializado.mjpu");
 	}
 
 	public MyLInkedList<VehicleDTO> getList() {
@@ -81,7 +82,7 @@ public class VehicleDAO {
 		this.listv = list;
 	}
 
-	public void escribirPlacas() {
+	public void writePlates() {
 		LocalTime timeCurrent = LocalTime.now();
 		LocalDate dateCurrent = LocalDate.now();
 		int hours = timeCurrent.getHour();
@@ -96,11 +97,11 @@ public class VehicleDAO {
 			sb.append("\n");
 		}
 
-		FileHandler.escribirArchivo("Cars.txt", sb.toString());
+		FileHandler.writeFile("vehicles.txt", sb.toString());
 	}
 
-	public void escribirEliminados(VehicleDTO v) {
-		StringBuilder sb = new StringBuilder(FileHandler.leerArchivo("salida.txt"));
+	public void writeDeleted(VehicleDTO v) {
+		StringBuilder sb = new StringBuilder(FileHandler.readFile("salida.txt"));
 		LocalTime timeCurrent = LocalTime.now();
 		LocalDate dateCurrent = LocalDate.now();
 		int hours = timeCurrent.getHour();
@@ -111,7 +112,7 @@ public class VehicleDAO {
 		sb.append(hours).append(":").append(mins).append(":").append(segs).append(" --> ");
 		sb.append(dateCurrent).toString();
 		sb.append("\n");
-		FileHandler.escribirArchivo("salida.txt", sb.toString());
+		FileHandler.writeFile("exit.txt", sb.toString());
 	}
 
 }

@@ -20,7 +20,7 @@ public class Show extends JPanel {
 
 	private JTextArea show;
 	private JLabel title;
-	private JButton volver;
+	private JButton back;
 	private Background in;
 
 	/**
@@ -60,13 +60,13 @@ public class Show extends JPanel {
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		add(pscroll, BorderLayout.CENTER);
 		
-		volver = new JButton("Volver");
-		volver.setFont(button);
-		volver.setBackground(Color.lightGray);
-		volver.setForeground(Color.BLACK);
-		volver.setBounds(275, 470, 150, 40);
-		volver.setActionCommand("VOLVER");
-		add(volver, BorderLayout.SOUTH);
+		back = new JButton("Volver");
+		back.setFont(button);
+		back.setBackground(Color.lightGray);
+		back.setForeground(Color.BLACK);
+		back.setBounds(275, 470, 150, 40);
+		back.setActionCommand("VOLVER");
+		add(back, BorderLayout.SOUTH);
 	}
 
 	public JTextArea getShow() {
@@ -85,12 +85,12 @@ public class Show extends JPanel {
 		this.title = title;
 	}
 
-	public JButton getVolver() {
-		return volver;
+	public JButton getBack() {
+		return back;
 	}
 
-	public void setVolver(JButton volver) {
-		this.volver = volver;
+	public void setBack(JButton volver) {
+		this.back = volver;
 	}
 
 	public Background getIn() {

@@ -21,7 +21,7 @@ public class FileHandler {
 	public FileHandler() {
 	}
 
-	public static String leerArchivo(String filename) {
+	public static String readFile(String filename) {
 		StringBuilder sb = new StringBuilder();
 		archivo = new File("src/co/edu/unbosque/model/persistence/" + filename);
 		try {
@@ -38,7 +38,7 @@ public class FileHandler {
 		return sb.toString();
 	}
 
-	public static void escribirArchivo(String filename, String content) {
+	public static void writeFile(String filename, String content) {
 		archivo = new File("src/co/edu/unbosque/model/persistence/" + filename);
 		try {
 			escritor = new PrintWriter(archivo);
@@ -51,7 +51,7 @@ public class FileHandler {
 		}
 	}
 
-	public static Object leerSerializado(String filename) {
+	public static Object readSerialized(String filename) {
 		try {
 			ois = new ObjectInputStream(new FileInputStream("src/co/edu/unbosque/model/persistence/" + filename));
 			Object obj = ois.readObject();
@@ -66,7 +66,7 @@ public class FileHandler {
 		return null;
 	}
 
-	public static void escribirSerializado(String filename, Object obj) {
+	public static void writeSerialized(String filename, Object obj) {
 		try {
 			oos = new ObjectOutputStream(new FileOutputStream("src/co/edu/unbosque/model/persistence/" + filename));
 			oos.writeObject(obj);
