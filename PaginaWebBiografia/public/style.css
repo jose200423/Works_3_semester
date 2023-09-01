@@ -1,40 +1,56 @@
-*{
+* {
 	font-family: 'ADLaM Display', cursive;
 }
 
-body{
-    background: url("https://cdn.pixabay.com/photo/2016/10/22/01/54/wood-1759566_1280.jpg");   
+body {
+	background: url("https://cdn.pixabay.com/photo/2017/06/13/13/51/marble-2398946_1280.jpg");
 }
 
-h1{
+h1 {
 	font-size: 80px;
-	background:linear-gradient(white, red);
-	color: transparent ;
+	background: linear-gradient(white, red);
+	color: transparent;
 	background-clip: text;
 	-webkit-background-clip: text;
 	animation: text 5s linear infinite;
- }
- 
- 
-@keyframes text{
-	 0%{
-		 filter: hue-rotate(0deg);
-	 }
-	 100%{
-		 filter: hue-rotate(360deg);
-	 }
- }
- 
-.titulosecundario{
-	color: white;
-	font-size: 25px;
 }
 
-.img-1{
-	margin: -100px 0px 0px 600px;
-	width: 350px;
+
+@keyframes text {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+
+	100% {
+		filter: hue-rotate(360deg);
+	}
 }
-.img-2{
-	margin: -1900px 0px 0px 1000px;
-	width: 250px;
+
+img {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+	margin-top: 50px;
+	margin-bottom: 200px;
+}
+
+.btn-custom {
+	color: black;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 40px;
+	/* Ajusta el tamaño de fuente según tus preferencias */
+	font-weight: bold;
+	/* Texto en negrilla */
+}
+
+.btn-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 20px;
+	justify-content: center;
+}
+
+.collapse-images {
+	display: flex;
+	justify-content: space-between;
 }
