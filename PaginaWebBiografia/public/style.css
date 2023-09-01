@@ -3,7 +3,7 @@
 }
 
 body {
-	background: url("https://cdn.pixabay.com/photo/2017/06/13/13/51/marble-2398946_1280.jpg");
+	background: black;
 }
 
 h1 {
@@ -35,9 +35,9 @@ img {
 }
 
 .btn-custom {
-	color: black;
-	font-family: "Times New Roman", Times, serif;
-	font-size: 40px;
+	color: white;
+	font-family: "'ADLaM Display', cursive";
+	font-size: 30px;
 	/* Ajusta el tamaño de fuente según tus preferencias */
 	font-weight: bold;
 	/* Texto en negrilla */
@@ -54,3 +54,4 @@ img {
 	display: flex;
 	justify-content: space-between;
 }
+
